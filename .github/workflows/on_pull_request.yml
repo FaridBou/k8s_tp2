@@ -8,11 +8,8 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
-    
-    steps:
-    - name: Login to Azure
-      run: AZ login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
 
+    steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
@@ -26,7 +23,7 @@ jobs:
       run: sudo apt install python3
 
     - name: Install Azure CLI
-      run: pip install azure-cli  
+      run: pip install azure-cli
 
     - name: Terraform Init
       run: terraform init
@@ -37,6 +34,10 @@ jobs:
     - name: Terraform Plan
       run: terraform plan 
 
+    - name: Manual Approval
+      if: github.event_name == 'push'
+      run: echo "You need to manually approve the deployment on the GitHub Actions UI."
+
     - name: Terraform Apply
-      if: github.event == 'push'
+      if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
       run: terraform apply 

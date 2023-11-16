@@ -17,9 +17,7 @@ jobs:
       uses: AZ login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
 
     - name: Set up Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: latest
+      run: hashicorp/setup-terraform@v1
 
     - name: Install Python
       run: pip install python

@@ -8,8 +8,11 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
-
+    
     steps:
+    - name: Login to Azure
+      run: AZ login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
+
     - name: Checkout repository
       uses: actions/checkout@v3
 
@@ -23,10 +26,7 @@ jobs:
       run: sudo apt install python3
 
     - name: Install Azure CLI
-      run: pip install azure-cli
-
-    - name: Login to Azure
-      run: AZ login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}  
+      run: pip install azure-cli  
 
     - name: Terraform Init
       run: terraform init

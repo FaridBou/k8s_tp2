@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Login to Azure
-      uses: AZ login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
+      run: AZ login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}
 
     - name: Set up Terraform
       run: hashicorp/setup-terraform@v1

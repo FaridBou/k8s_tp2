@@ -25,6 +25,9 @@ jobs:
     - name: Install Azure CLI
       run: pip install azure-cli
 
+    - name: Login to Azure
+      run: AZ login --tenant ${{ secrets.AZURE_TENANT_ID }} -u ${{ secrets.AZURE_USERNAME }} -p ${{ secrets.AZURE_PASSWORD }}  
+
     - name: Terraform Init
       run: terraform init
 

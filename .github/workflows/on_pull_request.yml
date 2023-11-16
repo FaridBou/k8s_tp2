@@ -20,7 +20,7 @@ jobs:
       uses: hashicorp/setup-terraform@v1
 
     - name: Install Python
-      run: pip install python
+      run: sudo apt install python3
 
     - name: Install Azure CLI
       run: pip install azure-cli

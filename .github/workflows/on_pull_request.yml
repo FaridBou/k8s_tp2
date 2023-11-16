@@ -19,8 +19,10 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
 
-    - name: Install Python
-      run: sudo apt install python3
+    - name: Setup Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: latest
 
     - name: Install Azure CLI
       run: pip install azure-cli

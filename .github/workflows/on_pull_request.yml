@@ -22,7 +22,7 @@ jobs:
         terraform_version: latest
 
     - name: Install Python
-      uses: actions/setup-python@v2
+      uses: pip install python
       with:
         python-version: latest
 

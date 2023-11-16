@@ -22,12 +22,10 @@ jobs:
         terraform_version: latest
 
     - name: Install Python
-      uses: pip install python
-      with:
-        python-version: latest
+      run: pip install python
 
     - name: Install Azure CLI
-      uses: pip install azure-cli
+      run: pip install azure-cli
 
     - name: Terraform Init
       run: terraform init

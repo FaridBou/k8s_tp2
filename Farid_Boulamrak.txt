@@ -6,13 +6,16 @@ install kubectl:
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
-
+**********************************************************************************************************
 acceder au path .kube/config:
+
 export KUBECONFIG=.kube/config
-
+**********************************************************************************************************
 install nginx:
-helm install ingress oci://ghcr.io/nginxinc/charts/nginx-ingress --version 1.0.2
 
+helm install ingress oci://ghcr.io/nginxinc/charts/nginx-ingress --version 1.0.2
+**********************************************************************************************************
 install redis:
+
 helm install redis oci://registry-1.docker.io/bitnamicharts/redis
 
